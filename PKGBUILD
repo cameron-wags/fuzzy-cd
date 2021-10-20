@@ -1,5 +1,5 @@
 pkgname=fuzzy-cd
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Showy directory changer powered by fzf"
@@ -8,9 +8,9 @@ url="https://github.com/cameron-wags/fuzzy-cd"
 license=("MIT")
 depends=("fzf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('57aa844f9129eb51e592d7ecfeb20eed')
+md5sums=('e908c09b4ccfbb3f7f1158ce55312154')
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm 755 ./fcd -t "$pkgdir/usr/bin/"
+    install -Dm 755 ./fuzzy-cd.sh -t "$pkgdir/usr/share/fuzzy-cd"
 }
