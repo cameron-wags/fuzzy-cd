@@ -28,5 +28,3 @@ fcd() {
     test -d "$SELECTION" && cd "$SELECTION"
 }
 
-fcd
-
