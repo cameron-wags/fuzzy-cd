@@ -17,14 +17,12 @@ __print_status_line() {
 fcd() {
     LS_ARG="-a"
 
-    __print_status_line
-    SELECTION="$(__select_dir $LS_ARG)"
-    while [[ -n "$SELECTION" && "$SELECTION" != "." && -d "$SELECTION" ]] && ls $LS_ARG -l "$SELECTION" | grep '^d' > /dev/null 2>&1 ; do
-        cd "$SELECTION"
+    while true; do
         __print_status_line
         SELECTION="$(__select_dir $LS_ARG)"
+        [[ -z "$SELECTION" || "$SELECTION" == "." || ! -d "$SELECTION" ]] && break
+        cd "$SELECTION"
+        [[ -n "$(find -mindepth 1 -maxdepth 1 -type d)" ]] || break
     done
-
-    test -d "$SELECTION" && cd "$SELECTION"
 }
 
