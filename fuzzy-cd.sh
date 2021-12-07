@@ -1,7 +1,7 @@
 #!/bin/sh
 
 __select_dir() {
-    SEL="$(ls $1 | fzf --no-multi --height=50% --min-height=15 --expect=H --preview="ls $1 {}")"
+    SEL="$(ls $1 | fzf --no-multi --height=90% --min-height=9 --expect=H --preview="ls $1 {}")"
     echo $SEL | grep -q '^H$' && echo '..' && return 0
     echo $SEL | tr -d '\n\f\r'
 }
