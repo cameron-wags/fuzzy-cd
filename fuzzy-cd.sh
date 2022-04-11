@@ -22,7 +22,7 @@ fcd() {
         SELECTION="$(__select_dir $LS_ARG)"
         [[ -z "$SELECTION" || "$SELECTION" == "." || ! -d "$SELECTION" ]] && break
         cd "$SELECTION"
-        [[ -n "$(find -mindepth 1 -maxdepth 1 -type d)" ]] || break
+        [[ -n "$(find . -mindepth 1 -maxdepth 1 -type d)" ]] || break
     done
 }
 
